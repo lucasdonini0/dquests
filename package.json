@@ -1,0 +1,74 @@
+{
+  "name": "dquests",
+  "private": true,
+  "version": "0.30.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "apk": "npm run build && npx cap sync android && cd android && .\\gradlew.bat assembleDebug",
+    "typecheck": "tsc --noEmit",
+    "release": "node scripts/release.mjs",
+    "desktop": "vite build && electron .",
+    "exe": "vite build && electron-builder --win nsis --publish never"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/status-bar": "^8.0.4",
+    "@fontsource/alegreya-sans": "^5.3.0",
+    "@fontsource/cinzel": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^8.5.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0",
+    "sharp": "^0.35.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  },
+  "description": "Diário de missões estilo WoW: XP, níveis, hábitos e chefes",
+  "author": "",
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.dquests.app",
+    "productName": "dQuests",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "!electron/installer.nsh",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "electron/icon.png",
+      "executableName": "dQuests"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "dQuests-Setup-${version}.${ext}",
+      "createDesktopShortcut": true,
+      "shortcutName": "dQuests",
+      "deleteAppDataOnUninstall": false,
+      "include": "electron/installer.nsh"
+    }
+  }
+}

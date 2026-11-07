@@ -1,0 +1,11 @@
+[
+  {
+    "version": "0.30.0",
+    "date": "2026-11-07",
+    "title": "Primeira versão pública",
+    "items": [
+      "Missões diárias, semanais e avulsas com XP, níveis, hábitos com streak, chefe da semana, treino, finanças e mesa de projetos.",
+      "App de Android (Capacitor) e de PC (Electron), com sincronização opcional por um repositório privado no GitHub."
+    ]
+  }
+]
